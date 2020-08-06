@@ -43,7 +43,9 @@
               <td>${{this.amount}}</td>
               <td align="right">
                 <a href="./records/{{this._id}}/edit" class="btn btn-info">edit</a>
-                <a class="btn btn-danger">delete</a>
+                <form action="./records/{{this._id}}/delete" method="POST" style="display: inline">
+                  <button class="btn btn-danger" type="submit">delete</button>
+                </form>
               </td>
             </tr>
             {{/each}}
