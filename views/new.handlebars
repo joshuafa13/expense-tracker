@@ -1,1 +1,38 @@
-<h1> New Page </h1>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <h3 class="card-title col-3">請輸入你的支出</h3>
+        <p class="col-2 text-danger">*必填欄位</p>
+
+      </div>
+      <hr>
+      <form action="/records" method="POST">
+        <div class="form-group">
+          <label for="name">名稱*:</label>
+          <input type="text" class="form-control" name="name" placeholder="name...">
+        </div>
+        <div class="form-group">
+          <label for="date">日期*:</label>
+          <input type="date" class="form-control" placeholder="" name="date">
+        </div>
+        <div class="form-group">
+          <label for="category">類別*:</label>
+          <select class="form-control col-4" class="form-control" name="category">
+            <option>Select a category</option>
+            <option value="家居物業">家居物業</option>
+            <option value="交通出行">交通出行</option>
+            <option value="休閒娛樂">休閒娛樂</option>
+            <option value="餐飲食品">餐飲食品</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">金額*:</label>
+          <input type="number" class="form-control" min="0.01" step="0.01" placeholder="amount" name="amount">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
