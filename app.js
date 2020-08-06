@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const Handlebars = require('handlebars')
+const methodOverride = require('method-override')
 
 const Record = require('./models/record')
 
@@ -18,6 +19,7 @@ Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -58,7 +60,7 @@ app.get('/records/:id/edit', (req, res) => {
 		.catch(error => console.log(error))
 })
 
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
 	const id = req.params.id
 	const { name, date, category, amount } = req.body
 	return Record.findById(id)
@@ -73,7 +75,7 @@ app.post('/records/:id/edit', (req, res) => {
 		.catch(error => console.log(error))
 })
 
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
 	const id = req.params.id
 	return Record.findById(id)
 		.then(record => record.remove())
