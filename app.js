@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const Handlebars = require('handlebars')
 
 const Record = require('./models/record')
 
@@ -11,6 +12,10 @@ const PORT = 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+	return arg1 == arg2 ? options.fn(this) : options.inverse(this)
+})
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
