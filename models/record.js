@@ -5,7 +5,7 @@ const recordSchema = new Schema({
 		type: String,
 	},
 	date: {
-		type: Date,
+		type: String,
 	},
 	category: {
 		type: String,

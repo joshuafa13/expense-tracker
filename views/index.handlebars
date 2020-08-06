@@ -1,1 +1,37 @@
-<h2>Hello! This is expense tracker index page</h2>
+<div class="category-container mt-5">
+  <div class="row justify-content-center">
+    <select class="form-control col-4">
+      <option>Select a category</option>
+      <option>家居物業</option>
+      <option>交通出行</option>
+      <option>休閒娛樂</option>
+      <option>餐飲食品</option>
+      <option>其他</option>
+    </select>
+  </div>
+</div>
+<div class="body-container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-2">
+      <h3 class="">總金額:</h3>
+    </div>
+    <div class="col-2">
+      <h3>12000</h3>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <ul class="col-4 mt-3" style="list-style: none;">
+      {{#each records}}
+      <li>
+        {{this.category}}
+        {{this.name}}
+        {{this.date}}
+        {{this.amount}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="row justify-content-center">
+    <a class="btn btn-primary mt-3" href="./records/new">Create</a>
+  </div>
+</div>

@@ -16,7 +16,7 @@ db.once('open', () => {
 	for (let i = 1; i <= 5; i++) {
 		Record.create({
 			name: `Random name ${i}`,
-			date: Date.now(),
+			date: '2020/8/3',
 			category: `${category[Math.floor(Math.random() * 5)]}`,
 			amount: Math.floor(Math.random() * 100),
 		})
