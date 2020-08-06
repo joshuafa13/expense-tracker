@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="card">
+  <div class="card" style="width: 40rem">
     <div class="card-body">
       <div class="category-container">
         <div class="row justify-content-center">
@@ -15,33 +15,41 @@
       </div>
       <div class="body-container mt-3">
         <div class="row justify-content-center">
-          <div class="col-2">
+          <div>
             <h3 class="">總金額:</h3>
           </div>
-          <div class="col-2">
+          <div>
             <h3>12000</h3>
           </div>
         </div>
-        <div class="row justify-content-around">
-          <ul class="col-4 mt-3" style="list-style: none;">
+        <table class="table table-striped">
+          <tbody>
             {{#each records}}
-            <li>
-              {{#ifEquals this.category '家居物業'}}<span class="fas fa-home" style="color:deepskyblue"></span>{{/ifEquals}}
-              {{#ifEquals this.category '交通出行'}}<span class="fas fa-shuttle-van"
-                style="color:deepskyblue"></span>{{/ifEquals}}
-              {{#ifEquals this.category '休閒娛樂'}}<span class="fas fa-grin-beam"
-                style="color:deepskyblue"></span>{{/ifEquals}}
-              {{#ifEquals this.category '餐飲食品'}}<span class="fas fa-utensils"
-                style="color:deepskyblue"></span>{{/ifEquals}}
-              {{#ifEquals this.category '其他'}}<span class="fas fa-pen" style="color:deepskyblue"></span>{{/ifEquals}}
-              {{this.name}}
-              {{this.date}}
-              {{this.amount}}
-            </li>
+            <tr>
+              <td>
+                {{#ifEquals this.category '家居物業'}}<span class="fas fa-home"
+                  style="color:deepskyblue"></span>{{/ifEquals}}
+                {{#ifEquals this.category '交通出行'}}<span class="fas fa-shuttle-van"
+                  style="color:deepskyblue"></span>{{/ifEquals}}
+                {{#ifEquals this.category '休閒娛樂'}}<span class="fas fa-grin-beam"
+                  style="color:deepskyblue"></span>{{/ifEquals}}
+                {{#ifEquals this.category '餐飲食品'}}<span class="fas fa-utensils"
+                  style="color:deepskyblue"></span>{{/ifEquals}}
+                {{#ifEquals this.category '其他'}}<span class="fas fa-pen" style="color:deepskyblue"></span>{{/ifEquals}}
+              </td>
+              <td>{{this.name}}</td>
+              <td>{{this.date}}</td>
+              <td>${{this.amount}}</td>
+              <td align="right">
+                <a class="btn btn-info">edit</a>
+                <a class="btn btn-danger">delete</a>
+              </td>
+            </tr>
             {{/each}}
-          </ul>
-        </div>
-        <div class="row justify-content-center">
+          </tbody>
+        </table>
+
+        <div class=" row justify-content-center">
           <a class="btn btn-primary mt-3" href="./records/new">Create</a>
         </div>
       </div>
