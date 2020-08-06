@@ -27,21 +27,22 @@
             {{#each records}}
             <tr>
               <td>
-                {{#ifEquals this.category '家居物業'}}<span class="fas fa-home"
+                {{#ifEquals this.category 'household'}}<span class="fas fa-home"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category '交通出行'}}<span class="fas fa-shuttle-van"
+                {{#ifEquals this.category 'transportation'}}<span class="fas fa-shuttle-van"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category '休閒娛樂'}}<span class="fas fa-grin-beam"
+                {{#ifEquals this.category 'entertainment'}}<span class="fas fa-grin-beam"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category '餐飲食品'}}<span class="fas fa-utensils"
+                {{#ifEquals this.category 'food'}}<span class="fas fa-utensils"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category '其他'}}<span class="fas fa-pen" style="color:deepskyblue"></span>{{/ifEquals}}
+                {{#ifEquals this.category 'others'}}<span class="fas fa-pen"
+                  style="color:deepskyblue"></span>{{/ifEquals}}
               </td>
               <td>{{this.name}}</td>
               <td>{{this.date}}</td>
               <td>${{this.amount}}</td>
               <td align="right">
-                <a class="btn btn-info">edit</a>
+                <a href="./records/{{this._id}}/edit" class="btn btn-info">edit</a>
                 <a class="btn btn-danger">delete</a>
               </td>
             </tr>
