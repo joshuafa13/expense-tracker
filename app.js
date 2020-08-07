@@ -36,14 +36,12 @@ db.once('open', () => {
 app.get('/', (req, res) => {
 	Record.find()
 		.lean()
+		.sort({ _id: 'asc' })
 		.then(records => {
 			const recordArr = records.map(record => Number(record.amount))
 			totalAmount = recordArr.reduce((total, amount) => total + amount)
-			console.log(recordArr, records)
+			res.render('index', { records, totalAmount })
 		})
-	Record.find()
-		.lean()
-		.then(records => res.render('index', { records, totalAmount }))
 		.catch(error => console.log(error))
 })
 
