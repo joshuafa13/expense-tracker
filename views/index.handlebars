@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <div class="card" style="width: 40rem">
+<div class="container my-5">
+  <div class="card" style="width: 50rem">
     <div class="card-body">
       <div class="category-container">
         <div class="row justify-content-center">
@@ -19,7 +19,7 @@
             <h3 class="">總金額:</h3>
           </div>
           <div>
-            <h3>12000</h3>
+            <h3>{{totalAmount}}</h3>
           </div>
         </div>
         <table class="table table-striped">
@@ -27,15 +27,15 @@
             {{#each records}}
             <tr>
               <td>
-                {{#ifEquals this.category 'household'}}<span class="fas fa-home"
+                {{#ifEquals this.category 'household'}}<span class="fas fa-home fa-2x"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'transportation'}}<span class="fas fa-shuttle-van"
+                {{#ifEquals this.category 'transportation'}}<span class="fas fa-shuttle-van fa-2x"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'entertainment'}}<span class="fas fa-grin-beam"
+                {{#ifEquals this.category 'entertainment'}}<span class="fas fa-grin-beam fa-2x"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'food'}}<span class="fas fa-utensils"
+                {{#ifEquals this.category 'food'}}<span class="fas fa-utensils fa-2x"
                   style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'others'}}<span class="fas fa-pen"
+                {{#ifEquals this.category 'others'}}<span class="fas fa-pen fa-2x"
                   style="color:deepskyblue"></span>{{/ifEquals}}
               </td>
               <td>{{this.name}}</td>
@@ -43,7 +43,8 @@
               <td>${{this.amount}}</td>
               <td align="right">
                 <a href="./records/{{this._id}}/edit" class="btn btn-info">edit</a>
-                <form action="./records/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
+                <form action="./records/{{this._id}}?_method=DELETE" method="POST" style="display: inline"
+                  onsubmit="return confirm('Press ok to confirm DELETE')">
                   <button class="btn btn-danger" type="submit">delete</button>
                 </form>
               </td>
