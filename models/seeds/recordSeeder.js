@@ -12,6 +12,10 @@ db.once('open', () => {
 			category: `${category[Math.floor(Math.random() * 5)]}`,
 			amount: Math.floor(Math.random() * 100),
 		})
+			.then(() => {
+				db.close()
+				console.log('done')
+			})
+			.catch(error => console.log(error))
 	}
-	console.log('done')
 })
