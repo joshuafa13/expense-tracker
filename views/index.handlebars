@@ -3,13 +3,15 @@
     <div class="card-body">
       <div class="category-container">
         <div class="row justify-content-center">
-          <select class="form-control col-4">
-            <option>Select a category</option>
-            <option>家居物業</option>
-            <option>交通出行</option>
-            <option>休閒娛樂</option>
-            <option>餐飲食品</option>
-            <option>其他</option>
+          <select class="form-control col-4" id="category" name="category" onchange="location = this.value;">
+            <option value="/">全部</option>
+            <option value="/filter/household" {{#ifEquals params 'household'}}selected{{/ifEquals}}>家居物業</option>
+            <option value="/filter/transportation" {{#ifEquals params 'transportation'}}selected{{/ifEquals}}>交通出行
+            </option>
+            <option value="/filter/entertainment" {{#ifEquals params 'entertainment'}}selected{{/ifEquals}}>休閒娛樂
+            </option>
+            <option value="/filter/food" {{#ifEquals params 'food'}}selected{{/ifEquals}}>餐飲食品</option>
+            <option value="/filter/others" {{#ifEquals params 'others'}}selected{{/ifEquals}}>其他</option>
           </select>
         </div>
       </div>
