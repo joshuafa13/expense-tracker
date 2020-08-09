@@ -5,7 +5,7 @@ const Handlebars = require('handlebars')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 const app = express()
-const PORT = precess.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 require('./config/mongoose')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -21,5 +21,5 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(PORT, () => {
-	console.log(`Listening on http://localhost:${PORT}`)
+	console.log(`Listening on http://localhost:3000`)
 })
