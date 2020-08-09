@@ -44,8 +44,8 @@
               <td>{{this.date}}</td>
               <td>${{this.amount}}</td>
               <td align="right">
-                <a href="./records/{{this._id}}/edit" class="btn btn-info">edit</a>
-                <form action="./records/{{this._id}}?_method=DELETE" method="POST" style="display: inline"
+                <a href="/records/{{this._id}}/edit" class="btn btn-info">edit</a>
+                <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline"
                   onsubmit="return confirm('Press ok to confirm DELETE')">
                   <button class="btn btn-danger" type="submit">delete</button>
                 </form>
