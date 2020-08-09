@@ -5,7 +5,7 @@ const Handlebars = require('handlebars')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 const app = express()
-const PORT = 3000
+const PORT = precess.env.PORT || 3000
 require('./config/mongoose')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
