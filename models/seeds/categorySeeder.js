@@ -11,13 +11,14 @@ const icons = [
 	'<i class="fas fa-pen"></i>',
 ]
 
-db.once('open', () => {
+db.once('open', async () => {
 	console.log('mongodb connected')
 	for (let i = 0; i < categories.length; i++) {
-		Category.create({
+		await Category.create({
 			name: `${categories[i]}`,
 			icon: `${icons[i]}`,
-		})
+		}).catch(error => console.log(error))
 	}
+	db.close()
 	console.log('done')
 })
