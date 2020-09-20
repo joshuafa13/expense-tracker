@@ -3,7 +3,8 @@ const router = express.Router()
 const Record = require('../../models/record')
 
 router.get('/', (req, res) => {
-	Record.find()
+	const userId = req.user._id
+	Record.find({ userId })
 		.lean()
 		.sort({ date: 'desc' })
 		.then(records => {
@@ -18,7 +19,8 @@ router.get('/', (req, res) => {
 
 
 router.get('/filter/:category', (req, res) => {
-	return Record.find({ category: `${req.params.category}` })
+	const userId = req.user._id
+	return Record.find({ userId, category: req.params.category })
 		.lean()
 		.sort({ date: 'desc' })
 		.then(records => {
@@ -32,7 +34,8 @@ router.get('/filter/:category', (req, res) => {
 })
 
 router.get('/filter/month/:ym', (req, res) => {
-	return Record.find()
+	const userId = req.user._id
+	return Record.find({ userId })
 		.lean()
 		.sort({ date: 'desc' })
 		.then(records => {
