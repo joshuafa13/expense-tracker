@@ -1,18 +1,69 @@
 <div class="container my-5">
   <div class="card" style="width: 50rem">
     <div class="card-body">
-      <div class="category-container">
-        <div class="row justify-content-center">
-          <select class="form-control col-4" id="category" name="category" onchange="location = this.value;">
-            <option value="/">全部</option>
-            <option value="/filter/household" {{#ifEquals params 'household'}}selected{{/ifEquals}}>家居物業</option>
-            <option value="/filter/transportation" {{#ifEquals params 'transportation'}}selected{{/ifEquals}}>交通出行
-            </option>
-            <option value="/filter/entertainment" {{#ifEquals params 'entertainment'}}selected{{/ifEquals}}>休閒娛樂
-            </option>
-            <option value="/filter/food" {{#ifEquals params 'food'}}selected{{/ifEquals}}>餐飲食品</option>
-            <option value="/filter/others" {{#ifEquals params 'others'}}selected{{/ifEquals}}>其他</option>
-          </select>
+      <div class="row">
+        <div class="category-container col-6">
+          <div class="row justify-content-center">
+            分類：
+            <select class="form-control col-4" id="category" name="category" onchange="location = this.value;">
+              <option value="/" {{#ifEquals category ''}}selected{{/ifEquals}}>全部</option>
+              <option value="/filter/household" {{#ifEquals category 'household'}}selected{{/ifEquals}}>家居物業
+              </option>
+              <option value="/filter/transportation" {{#ifEquals category 'transportation'}}selected{{/ifEquals}}>
+                交通出行
+              </option>
+              <option value="/filter/entertainment" {{#ifEquals category 'entertainment'}}selected{{/ifEquals}}>
+                休閒娛樂
+              </option>
+              <option value="/filter/food" {{#ifEquals category 'food'}}selected{{/ifEquals}}>
+                餐飲食品</option>
+              <option value="/filter/others" {{#ifEquals category 'others'}}selected{{/ifEquals}}>其他</option>
+            </select>
+          </div>
+        </div>
+        <div class="month-container col-6">
+          <div class="row justify-content-center">
+            月份：
+            <select class="form-control col-4" id="month" name="month" onchange="location = this.value;">
+              <option value="/" {{#ifEquals ym ''}}selected{{/ifEquals}}>全部</option>
+              <option value="/filter/month/2020-01" {{#ifEquals ym '2020-01'}}selected{{/ifEquals}}>
+                January
+              </option>
+              <option value="/filter/month/2020-02" {{#ifEquals ym '2020-02'}}selected{{/ifEquals}}>
+                February
+              </option>
+              <option value="/filter/month/2020-03" {{#ifEquals ym '2020-03'}}selected{{/ifEquals}}>
+                March
+              </option>
+              <option value="/filter/month/2020-04" {{#ifEquals ym '2020-04'}}selected{{/ifEquals}}>
+                April
+              </option>
+              <option value="/filter/month/2020-05" {{#ifEquals ym '2020-05'}}selected{{/ifEquals}}>
+                May
+              </option>
+              <option value="/filter/month/2020-06" {{#ifEquals ym '2020-06'}}selected{{/ifEquals}}>
+                June
+              </option>
+              <option value="/filter/month/2020-07" {{#ifEquals ym '2020-07'}}selected{{/ifEquals}}>
+                July
+              </option>
+              <option value="/filter/month/2020-08" {{#ifEquals ym '2020-08'}}selected{{/ifEquals}}>
+                August
+              </option>
+              <option value="/filter/month/2020-09" {{#ifEquals ym '2020-09'}}selected{{/ifEquals}}>
+                September
+              </option>
+              <option value="/filter/month/2020-10" {{#ifEquals ym '2020-10'}}selected{{/ifEquals}}>
+                October
+              </option>
+              <option value="/filter/month/2020-11" {{#ifEquals ym '2020-11'}}selected{{/ifEquals}}>
+                November
+              </option>
+              <option value="/filter/month/2020-12" {{#ifEquals ym '2020-12'}}selected{{/ifEquals}}>
+                December
+              </option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="body-container mt-3">
@@ -27,34 +78,34 @@
         <table class="table table-striped">
           <tbody>
             {{#each records}}
-            <tr>
-              <td>
-                {{#ifEquals this.category 'household'}}<span class="fas fa-home fa-2x"
-                  style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'transportation'}}<span class="fas fa-shuttle-van fa-2x"
-                  style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'entertainment'}}<span class="fas fa-grin-beam fa-2x"
-                  style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'food'}}<span class="fas fa-utensils fa-2x"
-                  style="color:deepskyblue"></span>{{/ifEquals}}
-                {{#ifEquals this.category 'others'}}<span class="fas fa-pen fa-2x"
-                  style="color:deepskyblue"></span>{{/ifEquals}}
-              </td>
-              <td>{{this.name}}</td>
-              <td>{{this.date}}</td>
-              <td>${{this.amount}}</td>
-              <td align="right">
-                <a href="/records/{{this._id}}/edit" class="btn btn-info">edit</a>
-                <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline"
-                  onsubmit="return confirm('Press ok to confirm DELETE')">
-                  <button class="btn btn-danger" type="submit">delete</button>
-                </form>
-              </td>
-            </tr>
+              <tr>
+                <td>
+                  {{#ifEquals this.category 'household'}}<span class="fas fa-home fa-2x"
+                      style="color:deepskyblue"></span>{{/ifEquals}}
+                  {{#ifEquals this.category 'transportation'}}<span class="fas fa-shuttle-van fa-2x"
+                      style="color:deepskyblue"></span>{{/ifEquals}}
+                  {{#ifEquals this.category 'entertainment'}}<span class="fas fa-grin-beam fa-2x"
+                      style="color:deepskyblue"></span>{{/ifEquals}}
+                  {{#ifEquals this.category 'food'}}<span class="fas fa-utensils fa-2x"
+                      style="color:deepskyblue"></span>{{/ifEquals}}
+                  {{#ifEquals this.category 'others'}}<span class="fas fa-pen fa-2x"
+                      style="color:deepskyblue"></span>{{/ifEquals}}
+                </td>
+                <td>{{this.name}}</td>
+                <td>{{#if this.merchant}}[{{this.merchant}}]{{/if}}</td>
+                <td>{{this.date}}</td>
+                <td>${{this.amount}}</td>
+                <td align="right">
+                  <a href="/records/{{this._id}}/edit" class="btn btn-info">edit</a>
+                  <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display: inline"
+                    onsubmit="return confirm('Press ok to confirm DELETE')">
+                    <button class="btn btn-danger" type="submit">delete</button>
+                  </form>
+                </td>
+              </tr>
             {{/each}}
           </tbody>
         </table>
-
         <div class=" row justify-content-center">
           <a class="btn btn-primary mt-3" href="./records/new">Create</a>
         </div>

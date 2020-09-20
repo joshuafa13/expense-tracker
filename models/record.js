@@ -13,6 +13,9 @@ const recordSchema = new Schema({
 	amount: {
 		type: Number,
 	},
+	merchant: {
+		type: String,
+	}
 })
 
 module.exports = mongoose.model('Record', recordSchema)

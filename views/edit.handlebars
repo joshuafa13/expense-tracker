@@ -4,7 +4,6 @@
       <div class="row">
         <h5 class="card-title col-4">請修改你的支出</h5>
         <p class="col-2 text-danger">*必填欄位</p>
-
       </div>
       <hr>
       <form action="/records/{{record._id}}?_method=PUT" method="POST">
@@ -17,14 +16,19 @@
           <input type="date" class="form-control" value="{{record.date}}" name="date">
         </div>
         <div class="form-group">
+          <label for="merchant">商家:</label>
+          <input type="merchant" class="form-control" value="{{record.merchant}}" name="merchant">
+        </div>
+        <div class="form-group">
           <label for="category">類別*:</label>
-          <select class="form-control col-4" class="form-control" name="category" value="{{this.category}}">
-            <option>Select a category</option>
-            <option value="household">家居物業</option>
-            <option value="transportation">交通出行</option>
-            <option value="entertainment">休閒娛樂</option>
-            <option value="food">餐飲食品</option>
-            <option value="others">其他</option>
+          <select class="form-control col-4" class="form-control" name="category">
+            <option {{#ifEquals record.category 'household'}}selected{{/ifEquals}}value="household">家居物業</option>
+            <option {{#ifEquals record.category 'transportation'}}selected{{/ifEquals}} value="transportation">交通出行
+            </option>
+            <option {{#ifEquals record.category 'entertainment'}}selected{{/ifEquals}} value="entertainment">休閒娛樂
+            </option>
+            <option {{#ifEquals record.category 'food'}}selected{{/ifEquals}} value="food">餐飲食品</option>
+            <option {{#ifEquals record.category 'others'}}selected{{/ifEquals}} value="others">其他</option>
           </select>
         </div>
         <div class="form-group">

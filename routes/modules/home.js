@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
 		})
 })
 
+
+
 router.get('/filter/:category', (req, res) => {
-	Record.find({ category: `${req.params.category}` })
+	return Record.find({ category: `${req.params.category}` })
 		.lean()
 		.sort({ date: 'desc' })
 		.then(records => {
@@ -24,8 +26,30 @@ router.get('/filter/:category', (req, res) => {
 			if (records.length !== 0) {
 				totalAmount = records.map(record => Number(record.amount)).reduce((total, amount) => total + amount)
 			}
-			const params = req.params.category
-			res.render('index', { records, totalAmount, params })
+			const category = req.params.category
+			res.render('index', { records, totalAmount, category })
+		})
+})
+
+router.get('/filter/month/:ym', (req, res) => {
+	return Record.find()
+		.lean()
+		.sort({ date: 'desc' })
+		.then(records => {
+			const selectedRecords = []
+			records.forEach(record => {
+				if (record.date.includes(req.params.ym)) {
+					selectedRecords.push(record)
+				}
+			})
+			// console.log(req.params.ym)
+			records = selectedRecords
+			let totalAmount = 0
+			if (records.length !== 0) {
+				totalAmount = records.map(record => Number(record.amount)).reduce((total, amount) => total + amount)
+			}
+			const ym = req.params.ym
+			res.render('index', { records, totalAmount, ym })
 		})
 })
 

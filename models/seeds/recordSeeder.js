@@ -8,7 +8,7 @@ db.once('open', async () => {
 	for (let i = 1; i <= 5; i++) {
 		await Record.create({
 			name: `測試 ${i}`,
-			date: '2020-8-3',
+			date: '2020-08-03',
 			category: `${category[Math.floor(Math.random() * 5)]}`,
 			amount: Math.floor(Math.random() * 100),
 		}).catch(error => console.log(error))
